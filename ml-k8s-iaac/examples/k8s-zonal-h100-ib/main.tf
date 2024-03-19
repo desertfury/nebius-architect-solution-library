@@ -25,10 +25,10 @@ module "kube" {
     }
   ]
   node_groups = {
-    "k8s-ng-ib-system" = {
+    "k8s-ng-ib-system1" = {
       description = "Kubernetes nodes group 01 with fixed 1 size scaling"
       fixed_scale = {
-        size = 2
+        size = 1
       }
       nat = true
       node_labels = {
@@ -38,7 +38,7 @@ module "kube" {
     "k8s-ng-h100-8gpu1" = {
       description = "Kubernetes nodes h100-8-gpu nodes with autoscaling"
       fixed_scale = {
-        size = 2
+        size = 1
       }
       gpu_cluster_id = nebius_compute_gpu_cluster.k8s_cluster.id
       platform_id     = "gpu-h100"
@@ -52,7 +52,7 @@ module "kube" {
       node_labels = {
         "group" = "h100-8gpu" 
 	"nebius.com/gpu" = "H100"
-	"nebius.com/"gpu-h100-a-llm" = "H100"
+	"nebius.com/gpu-h100-a-llm" = "H100"
       }
     }
   }
